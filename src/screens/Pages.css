@@ -1,0 +1,25 @@
+.blue-purple {
+    background-color: #9DACFF;
+}
+
+.landing-page {
+    background-image: linear-gradient(#5C2751 25%, #7b4394 100%);
+    min-height: 90vh;
+}
+
+.event-img {
+    max-width: 23vw;
+    max-height: 15vw;
+    margin: auto;
+}
+
+.card {
+    max-width: 22vw;
+    color: black;
+    margin: 1vw;
+    padding: 0;
+}
+
+.event-info {
+    padding: 2px;
+}
