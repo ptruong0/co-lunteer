@@ -23,3 +23,14 @@
 .event-info {
     padding: 2px;
 }
+
+.sign-up-form {
+    position: absolute;
+    background-color: rgb(104, 180, 155);
+    margin: auto;
+    width: 50vw;
+    left: 25vw;
+    top: 25vh;
+    border-radius: 30px;
+    padding: 10px 20px;
+}

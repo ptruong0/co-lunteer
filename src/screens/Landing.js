@@ -18,7 +18,7 @@ const Landing = () => {
      </div>*/
      return (
 
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <div class="cover-container d-flex p-3 mx-auto flex-column" style={{height: "100vh"}}>
         <Header />
 
         <main class="px-3">
