@@ -34,3 +34,8 @@
     border-radius: 30px;
     padding: 10px 20px;
 }
+
+#organizer-new-event-form {
+    padding-top: 20px;
+    width: 50vw;
+}

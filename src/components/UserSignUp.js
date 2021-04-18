@@ -2,7 +2,10 @@ import { Form, Button, Row } from 'react-bootstrap';
 
 const UserSignUp = (props) => {
     return (
-        <Form className="sign-up-form" id="event-sign-up" onSubmit={props.signUp}>
+        <Form className="sign-up-form" id="user-sign-up-form" onSubmit={(event) => {
+            props.signUp(event);
+            props.hideForm();
+        }}>
             <h3>{props.event.title}</h3>
             <p>{props.event.organization}</p>
             <Form.Group  controlId="formName">
@@ -24,9 +27,9 @@ const UserSignUp = (props) => {
             </Form.Group>
             <br />
             <Form.Group>
-                <Button variant="outline-secondary" onClick={props.cancel}>Cancel</Button>
+                <Button variant="outline-secondary" onClick={props.hideForm}>Cancel</Button>
                 
-                <Button type="submit" className="ml-5">Sign Up</Button>
+                <Button type="submit" className="ml-5">Submit</Button>
             </Form.Group>
         </Form>
     );
