@@ -64,7 +64,6 @@ const App = () => {
     };
     events.push(newEvent);
     setEvents(events);
-    console.log(events);
 
     form.reset();
     
@@ -74,7 +73,6 @@ const App = () => {
   const onFilter = (e) => {
 
     const option = document.querySelector("#event-filter-btns");
-    console.log(option.filter.value);
     if (option.filter.value === "All")
     {
       setEventsToDisplay(null);
@@ -84,8 +82,6 @@ const App = () => {
       });
       setEventsToDisplay(filteredEvents);
     }
-    console.log(events);
-    console.log(eventsToDisplay);
   }
 
   return (

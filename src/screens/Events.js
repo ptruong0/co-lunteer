@@ -36,7 +36,7 @@ const Events = (props) => {
         <Header />
 
         <main class="h-100">
-            <h2 style={{margin: "10px", textAlign: "left", color: "black"}}>Events near me</h2>
+            <h1 style={{marginTop: "10px"}}>EVENTS NEAR ME</h1>
 
              <Form onChange={props.onFilter} id="event-filter-btns">
                 <div key={"inline-radio"} className="mb-3"></div>

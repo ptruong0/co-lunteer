@@ -14,7 +14,7 @@ const UserSignUp = (props) => {
             </Form.Group>
             <Form.Group controlId="formPhone">
                 <Form.Label>Cell Phone Number</Form.Label>
-                <Form.Control name="phone" type="tel" placeholder="(123)456-7890" required/>
+                <Form.Control name="phone" type="tel" placeholder="(123) 456-7890" required/>
             </Form.Group>
             <Form.Group controlId="formEmail">
                 <Form.Label>Email address</Form.Label>
