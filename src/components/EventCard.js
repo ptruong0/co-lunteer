@@ -13,7 +13,7 @@ const EventCard = (props) => {
                 <ListGroup className="list-group-flush m-1">
                     <ListGroupItem className="event-info">{props.event.organization}</ListGroupItem>
                      <ListGroupItem className="event-info">{props.event.date.toLocaleDateString("en-US")}</ListGroupItem> 
-                     <Button variant="info" onClick={() => props.getSignUpForm(props.event)} className="p-0">Sign Up</Button>
+                     <Button variant="info" onClick={() => props.getSignUpForm(props.event)} className="p-0">Submit</Button>
                 </ListGroup>
             </Card>
 

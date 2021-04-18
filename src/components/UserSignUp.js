@@ -2,7 +2,7 @@ import { Form, Button, Row } from 'react-bootstrap';
 
 const UserSignUp = (props) => {
     return (
-        <Form className="sign-up-form" onSubmit={props.signUp}>
+        <Form className="sign-up-form" id="event-sign-up" onSubmit={props.signUp}>
             <h3>{props.event.title}</h3>
             <p>{props.event.organization}</p>
             <Form.Group  controlId="formName">

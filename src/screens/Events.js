@@ -72,11 +72,12 @@ const Events = () => {
 
     const signUp = (e) => {
         e.preventDefault(); // prevent from reloading instantly
+        const form = document.querySelector("#event-sign-up");
         const user = {
-            name: "Philip Truong",
-            email: "dsfasdf@gmail.com",
-            phone: "1234567890",
-            hoursToVolunteer: 4
+            name: form.name.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            hoursToVolunteer: form.hours.value
         };
         const targetIndex = events.findIndex(ev => ev.title === selectedEvent.title && ev.organization === selectedEvent.organization);
         // do not add volunteer if they already signed up
