@@ -1,7 +1,8 @@
 
 import Header from '../components/Header.js';
 import { useState, useEffect } from 'react';
-import { Row, Container } from 'react-bootstrap';
+import { Row, Container, Form } from 'react-bootstrap';
+import { RadioGroup, Radio } from 'react-radio-group';
 
 import EventCard from '../components/EventCard';
 import UserSignUp from '../components/UserSignUp';
@@ -17,14 +18,16 @@ const Events = (props) => {
 
     const hideForm = () => {
         setShowSignUp(false);
+
     }
-
-    useEffect(() => {
-        console.log(props.events);
-    })
     
-
-    const eventComponents = props.events.map((e) => {
+    let display = null;
+    if (props.eventsToDisplay) {
+        display = props.eventsToDisplay;
+    } else{
+        display = props.events;
+    }
+    const eventComponents = display.map((e) => {
         return <EventCard event={e} getSignUpForm={props.getSignUpForm} showForm={showForm}/>;
     })
 
@@ -34,6 +37,15 @@ const Events = (props) => {
 
         <main class="h-100">
             <h2 style={{margin: "10px", textAlign: "left", color: "black"}}>Events near me</h2>
+
+             <Form onChange={props.onFilter} id="event-filter-btns">
+                <div key={"inline-radio"} className="mb-3"></div>
+                 <Form.Check inline label="All" type="radio" name="filter" id="radioAll" value="All"/> 
+                <Form.Check inline label="Environmental Change" type="radio" name="filter" value="Environmental Change" id="radioEnv" />
+                <Form.Check inline label="Community Engagement" type="radio" name="filter" value="Community Engagement" id="radioComm" />
+                <Form.Check inline label="Education Support" type="radio" name="filter" value="Education Support" id="radioEdu" />
+             </Form>
+
             <Row class="d-flex justify-content-left">{eventComponents}</Row>
             
         {showSignUp ? <UserSignUp signUp={props.signUp} hideForm={hideForm} event={props.selectedEvent}/> : null}

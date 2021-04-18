@@ -7,64 +7,22 @@ import Landing from './screens/Landing';
 import Organizer from './screens/Organizer';
 import Events from './screens/Events';
 
+import eventPlaceholders from './eventPlaceholders';
+
 
 const App = () => {
 
     let [events, setEvents] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState(null);
+    const [eventsToDisplay, setEventsToDisplay] = useState(null);
     let history = useHistory();
+    
 
     const getSignUpForm = (event) => {
     setSelectedEvent(event);
   }
 
 
-
-  const eventPlaceholders = [
-    {
-      title: "Pet Adoption Fair",
-      organization: "Cal Animal Shelter",
-      details: "Come help walk and feed the dogs and cats at our local animal shelter on Main Street.",
-      date: new Date("April 20, 2021 11:00:00"),
-      imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2019%2F01%2Fpuppies.jpg",
-      signedUp: []
-    },
-    {
-      title: "Food Distribution for Homeless ",
-      organization: "Soup Kitchen",
-      details: "Come help walk and feed the dogs and cats at our local animal shelter on Main Street.",
-      date: new Date("April 18, 2021 1:00:00"),
-      imageUrl: "https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/20171115arJubileeSoup01-1569077243.jpg",
-      signedUp: []
-    }, {
-      title: "Pet Adoption Fair",
-      organization: "Cal Animal Shelter",
-      details: "Come help walk and feed the dogs and cats at our local animal shelter on Main Street.",
-      date: new Date("April 20, 2021 11:00:00"),
-      imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2019%2F01%2Fpuppies.jpg",
-      signedUp: []
-    }, {
-      title: "Pet Adoption Fair",
-      organization: "Cal Animal Shelter",
-      details: "Come help walk and feed the dogs and cats at our local animal shelter on Main Street.",
-      date: new Date("April 20, 2021 11:00:00"),
-      imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2019%2F01%2Fpuppies.jpg",
-      signedUp: []
-    }, {
-      title: "Pet Adoption Fair",
-      organization: "Cal Animal Shelter",
-      details: "Come help walk and feed the dogs and cats at our local animal shelter on Main Street.",
-      date: new Date("April 20, 2021 11:00:00"),
-      imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2019%2F01%2Fpuppies.jpg",
-      signedUp: []
-    }, {
-      title: "Pet Adoption Fair",
-      organization: "Cal Animal Shelter",
-      details: "Come help walk and feed the dogs and cats at our local animal shelter on Main Street.",
-      date: new Date("April 20, 2021 11:00:00"),
-      imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?q=85&c=sc&poi=face&w=2000&h=1333&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F20%2F2019%2F01%2Fpuppies.jpg",
-      signedUp: []
-    },]
 
   useEffect(() => {
     setEvents(eventPlaceholders);
@@ -90,7 +48,6 @@ const App = () => {
       
       form.reset();
     }
-
   }
 
   const addEvent = (e) => {
@@ -101,6 +58,7 @@ const App = () => {
       organization: form.org.value,
       details: form.details.value,
       date: new Date(form.date.value),
+      type: form.type.value,
       imageUrl: form.imageUrl.value,
       signedUp: []
     };
@@ -113,11 +71,28 @@ const App = () => {
     history.push("/events");
   }
 
+  const onFilter = (e) => {
+
+    const option = document.querySelector("#event-filter-btns");
+    console.log(option.filter.value);
+    if (option.filter.value === "All")
+    {
+      setEventsToDisplay(null);
+    } else {
+      const filteredEvents = events.filter((ev) => {
+          return ev.type === option.filter.value;
+      });
+      setEventsToDisplay(filteredEvents);
+    }
+    console.log(events);
+    console.log(eventsToDisplay);
+  }
+
   return (
     <div className="App">
       <Switch>
         <Route path="/" component={Landing} exact />
-        <Route path="/events" render={(props) => (<Events {...props} events={events} signUp={signUp} selectedEvent={selectedEvent} getSignUpForm={getSignUpForm} />)} />
+        <Route path="/events" render={(props) => (<Events {...props} events={events} eventsToDisplay={eventsToDisplay} signUp={signUp} selectedEvent={selectedEvent} getSignUpForm={getSignUpForm} onFilter={onFilter}/>)} />
         <Route path="/organizer" render={(props) => (<Organizer {...props} addEvent={addEvent}/>)}/>
         <Route component={Error} />
       </Switch>

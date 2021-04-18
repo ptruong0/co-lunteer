@@ -25,17 +25,27 @@
 }
 
 .sign-up-form {
-    position: absolute;
+    position: fixed;
     background-color: rgb(104, 180, 155);
     margin: auto;
-    width: 50vw;
-    left: 25vw;
-    top: 25vh;
+    width: 40vw;
+    left: 30vw;
+    top: 10vh;
     border-radius: 30px;
-    padding: 10px 20px;
+    padding: 30px;
+    box-shadow: 0 0 50px #000000;
 }
 
 #organizer-new-event-form {
     padding-top: 20px;
     width: 50vw;
+}
+
+input[type=radio] {
+    width: 20px;
+    height: 20px;
+}
+
+label {
+    margin-bottom: -5px;
 }

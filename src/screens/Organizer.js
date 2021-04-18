@@ -27,6 +27,12 @@ const Organizer = (props) => {
                         <Form.Label>Date of Event*</Form.Label>
                         <Form.Control name="date" type="date" required/>
                     </Form.Group>
+                    <Form.Group controlId="formType">
+                <div key={"inline-radio"} className="mb-3"></div>
+                <Form.Check inline label="Environmental Change" type="radio" name="type" value="Environmental Change" id="radioEnv" />
+                <Form.Check inline label="Community Engagement" type="radio" name="type" value="Community Engagement" id="radioComm" />
+                <Form.Check inline label="Education Support" type="radio" name="type" value="Education Support" id="radioEdu" />
+             </Form.Group>
                     <Form.Group controlId="formImage">
                         <Form.Label>Image address/URL you'd like to attach</Form.Label>
                         <Form.Control name="imageUrl" type="url" placeholder="e.g. https://image/of/puppies.jpg" />
